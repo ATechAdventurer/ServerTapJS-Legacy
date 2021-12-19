@@ -1,0 +1,39 @@
+{
+  "name": "servertapjs",
+  "version": "0.0.1",
+  "description": "A TypeScript library for working with the ServerTap API",
+  "main": "dist/index.js",
+  "module": "dist/index.m.js",
+  "umd:main": "dist/index.umd.js",
+  "source": "src/index.ts",
+  "scripts": {
+    "build": "rm -rf dist && microbundle  --tsconfig tsconfig.json",
+    "dev": "microbundle watch --tsconfig tsconfig.json"
+  },
+  "keywords": [
+    "ServerTap",
+    "Minecraft",
+    "API",
+    "Bukkit",
+    "Spigot",
+    "Paper",
+    "MC",
+    "Java",
+    "phybros"
+  ],
+  "author": "Cameron Steele (ATechAdventurer)",
+  "license": "MIT",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "jest": "^27.4.5",
+    "microbundle": "^0.14.2",
+    "nock": "^13.2.1"
+  },
+  "dependencies": {
+    "isomorphic-unfetch": "^3.1.0"
+  }
+}
