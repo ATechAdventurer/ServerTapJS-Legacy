@@ -3,9 +3,14 @@
   "version": "0.0.1",
   "description": "A TypeScript library for working with the ServerTap API",
   "main": "dist/index.js",
+  "type": "module",
   "module": "dist/index.m.js",
   "umd:main": "dist/index.umd.js",
   "source": "src/index.ts",
+  "exports": {
+    "require": "dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
   "scripts": {
     "build": "rm -rf dist && microbundle  --tsconfig tsconfig.json",
     "dev": "microbundle watch --tsconfig tsconfig.json"

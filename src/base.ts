@@ -1,9 +1,6 @@
 import fetch from 'isomorphic-unfetch';
+import { Config } from './types';
 
-type Config = {
-    apiKey?: string;
-    baseUrl: string;
-}
 
 export abstract class Base {
     private apiKey: string
@@ -11,14 +8,14 @@ export abstract class Base {
 
     constructor(config: Config) {
         this.apiKey = config.apiKey
-        this.baseUrl = config.baseUrl || 'http://localhost:4567'
+        this.baseUrl = config.baseUrl || 'https://dev.to/api/'
     }
 
-    protected request<T>(endpoint: string, options?: RequestInit, contentType?: string): Promise<T> {
+    protected request<T>(endpoint: string, options?: RequestInit, contentType: string = 'application/json'): Promise<T> {
         const url = this.baseUrl + "/v1" + endpoint
-        const headers = {
-            'api-key': this.apiKey,
-            'Content-type': 'application/json'
+        let headers = {
+            'Content-type': contentType,
+            'api-key': this.apiKey
         }
 
         const config = {
@@ -30,7 +27,12 @@ export abstract class Base {
             if (r.ok) {
                 return r.json()
             }
-            throw new Error(r.statusText)
+            switch (r.status) {
+                case 404:
+                    throw new Error("Not found");
+                case 400:
+                    throw new Error("Bad request");
+            }
         })
     }
 }

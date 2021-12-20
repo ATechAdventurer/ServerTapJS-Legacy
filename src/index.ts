@@ -9,7 +9,8 @@ import { Base } from "./base";
 import { applyMixins } from "./utils";
 
 
-class ServerTap extends Base { }
+class ServerTap extends Base {
+}
 interface ServerTap extends Players, Server, Chat, Economy, PlaceHolderApi, Plugins { }
 applyMixins(ServerTap, [Players, Server, Chat, Economy, PlaceHolderApi, Plugins]);
 
