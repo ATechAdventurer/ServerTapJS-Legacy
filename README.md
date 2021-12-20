@@ -5,7 +5,9 @@ ServerTap-JS
 A small client for interacting with https://github.com/phybros/servertap using Typescript or Javascript
 </p>
 <hr>
+
 # Installation
+
 ```bash
 npm install --save servertap-js
 ```
